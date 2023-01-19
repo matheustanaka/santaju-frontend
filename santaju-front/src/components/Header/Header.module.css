@@ -1,6 +1,11 @@
 .header {
-  padding: 40px;
+  padding: 30px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   background-color: #006a4e;
+}
+
+.title {
+  color: #ffffff;
+  font-size: 45px;
 }

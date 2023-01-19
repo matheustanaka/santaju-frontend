@@ -1,14 +1,12 @@
 import styles from "./Header.module.css";
-
-import CreateProductButton from "../CreateProductButton/CreateProductButton";
-import CreateUserButton from "../CreateUserButton/CreateUserButton";
+import NewOrderButton from "../NewOrderButton/NewOrderButton";
 
 export default function Header() {
   return (
     <div>
       <header className={styles.header}>
-        <CreateProductButton />
-        <CreateUserButton />
+        <h1 className={styles.title}>Gestão de Vendas</h1>
+        <NewOrderButton />
       </header>
     </div>
   );
