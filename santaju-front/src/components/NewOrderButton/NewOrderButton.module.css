@@ -1,0 +1,13 @@
+.createUser {
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+
+  font-family: "Roboto Mono", monospace;
+  text-align: center;
+  background-color: rgb(54, 145, 19);
+  color: #ffffff;
+
+  cursor: pointer;
+}
