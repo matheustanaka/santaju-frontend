@@ -26,3 +26,8 @@
   background-color: #04aa6d;
   color: white;
 }
+
+.tableIcon {
+  display: flex;
+  justify-content: space-around;
+}
