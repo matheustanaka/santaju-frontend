@@ -4,20 +4,22 @@ import styles from "./Table.module.css";
 
 import EditIcon from "../EditIcon/EditIcon";
 import DeleteIcon from "../DeleteIcon/DeleteIcon";
+import { useClient } from "../../hooks/useClient";
 
 export default function Table() {
-  const [clients, setClients] = useState([]);
+  const { clients, setClients } = useClient();
 
   const fetchClients = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/clients");
-      setClients(response.data);
+      const { data } = await axios.get("http://localhost:3000/api/clients");
+      setClients(data);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
+    console.log(clients);
     fetchClients();
   }, []);
 
