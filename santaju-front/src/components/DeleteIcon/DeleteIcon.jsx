@@ -1,6 +1,6 @@
 import { RiDeleteBin7Line } from "react-icons/ri";
 import axios from "axios";
-
+import { useClient } from "../../hooks/useClient";
 import styles from "./DeleteIcon.module.css";
 
 export default function DeleteIcon({ client, fetchClients }) {
