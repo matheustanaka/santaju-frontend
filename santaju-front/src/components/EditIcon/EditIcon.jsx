@@ -5,14 +5,17 @@ import { useState, useEffect } from "react";
 import styles from "./EditIcon.module.css";
 // import axios from "axios";
 
-export default function EditIcon({ client, fetchClients }) {
+export default function EditIcon({ client, fetchClients, onClick }) {
   const [openEditModal, setOpenEditModal] = useState(false);
 
   return (
     <div>
       <FiEdit
         className={styles.editIcon}
-        onClick={() => setOpenEditModal(true)}
+        onClick={() => {
+          setOpenEditModal(true);
+          onClick();
+        }}
       />
       <EditOrderModal
         client={client}
