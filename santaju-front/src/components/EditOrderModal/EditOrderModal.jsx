@@ -1,6 +1,6 @@
 import styles from "./EditOrderModal.module.css";
-// import { useState } from "react";
 import axios from "axios";
+import { useClient } from "../../hooks/useClient";
 
 export default function EditOrderModal({
   open,
@@ -10,14 +10,25 @@ export default function EditOrderModal({
 }) {
   if (!open) return null;
 
-  const handleUpdateClient = async (e) => {
+  const { name, phone, setName, setPhone } = useClient();
+
+  const handleChangeName = (event) => {
+    setName(event.target.value);
+  };
+
+  const handleChangePhone = (event) => {
+    setPhone(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
       await axios.put(`http://localhost:3000/api/client/${client.id}`, {
-        name: e.target.value,
-        phone: e.target.value,
+        name: name,
+        phone: phone,
       });
 
-      await fetchClients();
+      fetchClients();
     } catch (error) {
       console.log(error);
     }
@@ -35,15 +46,15 @@ export default function EditOrderModal({
           X
         </p>
         <div className={styles.content}>
-          <form className={styles.form} onSubmit={handleUpdateClient}>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <label>
               <input
                 className={styles.input}
                 type="text"
                 name="name"
                 placeholder="Nome"
-                value={client.name}
-                onChange={handleUpdateClient}
+                value={name}
+                onChange={handleChangeName}
               />
             </label>
             <label>
@@ -51,9 +62,9 @@ export default function EditOrderModal({
                 className={styles.input}
                 type="text"
                 name="phone"
-                value={client.phone}
+                value={phone}
                 placeholder="Telefone"
-                onChange={handleUpdateClient}
+                onChange={handleChangePhone}
               />
             </label>
             <button className={styles.btn} type="submit">

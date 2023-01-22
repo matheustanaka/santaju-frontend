@@ -1,24 +1,27 @@
 import styles from "./NewOrderModal.module.css";
-import { useState } from "react";
+import { useClient } from "../../hooks/useClient";
 import axios from "axios";
 
 export default function NewOrderModal({ open, onClose }) {
   if (!open) return null;
 
-  const [client, setClient] = useState({ name: "", phone: "" });
+  const { name, phone, setName, setPhone } = useClient();
 
-  const handleChange = (event) => {
-    const { name, phone, value } = event.target;
-    setClient({ ...client, [name]: value, [phone]: value });
+  const handleChangeName = (event) => {
+    setName(event.target.value);
+  };
+
+  const handleChangePhone = (event) => {
+    setPhone(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/client",
-        client
-      );
+      const response = await axios.post("http://localhost:3000/api/client", {
+        name: name,
+        phone: phone,
+      });
       console.log(response.data);
     } catch (error) {
       console.log(error);
@@ -44,8 +47,8 @@ export default function NewOrderModal({ open, onClose }) {
                 type="text"
                 name="name"
                 placeholder="Nome"
-                value={client.name}
-                onChange={handleChange}
+                value={name}
+                onChange={handleChangeName}
               />
             </label>
             <label>
@@ -53,9 +56,9 @@ export default function NewOrderModal({ open, onClose }) {
                 className={styles.input}
                 type="text"
                 name="phone"
-                value={client.phone}
+                value={phone}
                 placeholder="Telefone"
-                onChange={handleChange}
+                onChange={handleChangePhone}
               />
             </label>
             <button className={styles.btn} type="submit">
