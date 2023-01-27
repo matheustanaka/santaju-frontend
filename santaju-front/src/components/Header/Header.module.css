@@ -1,8 +1,13 @@
 .header {
   padding: 30px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: #006a4e;
+}
+
+.btns {
+  display: flex;
+  padding: 10px;
 }
 
 .title {

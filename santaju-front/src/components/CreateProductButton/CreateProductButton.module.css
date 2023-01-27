@@ -1,4 +1,4 @@
-.createUser {
+.createProduct {
   padding: 16px;
   font-size: 16px;
   border-radius: 8px;
@@ -11,5 +11,5 @@
 
   cursor: pointer;
 
-  margin-right: 10px;
+  margin-left: 10px;
 }
