@@ -7,7 +7,7 @@ import DeleteIcon from "../DeleteIcon/DeleteIcon";
 import { useClient } from "../../hooks/useClient";
 
 export default function Table() {
-  const { clients, setClients } = useClient();
+  const { clients, setClients, setName, setPhone } = useClient();
 
   const fetchClients = async () => {
     try {
@@ -16,6 +16,13 @@ export default function Table() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const onEditClick = (client) => {
+    setName(client.name);
+    setPhone(client.phone);
+
+    console.log(client);
   };
 
   useEffect(() => {
@@ -35,7 +42,13 @@ export default function Table() {
           <td>{client.name}</td>
           <td>{client.phone}</td>
           <td className={styles.tableIcon}>
-            <EditIcon client={client} fetchClients={fetchClients} />
+            <EditIcon
+              client={client}
+              fetchClients={fetchClients}
+              onClick={() => {
+                onEditClick(client);
+              }}
+            />
             <DeleteIcon client={client} fetchClients={fetchClients} />
           </td>
         </tr>

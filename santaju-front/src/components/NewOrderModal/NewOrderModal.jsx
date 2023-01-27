@@ -5,7 +5,7 @@ import axios from "axios";
 export default function NewOrderModal({ open, onClose }) {
   if (!open) return null;
 
-  const { name, phone, setName, setPhone } = useClient();
+  const { name, phone, setName, setPhone, fetchClients } = useClient();
 
   const handleChangeName = (event) => {
     setName(event.target.value);
@@ -23,6 +23,8 @@ export default function NewOrderModal({ open, onClose }) {
         phone: phone,
       });
       console.log(response.data);
+
+      fetchClients();
     } catch (error) {
       console.log(error);
     }
