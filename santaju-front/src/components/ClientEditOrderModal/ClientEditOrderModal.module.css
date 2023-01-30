@@ -32,7 +32,22 @@
 .closeBtn {
   margin-left: auto;
   margin-bottom: 10px;
+  padding: 5px;
+
+  border-radius: 8px;
+  
+  background-color: rgb(225, 55, 55);
+  color: #f5f5f5;
+
+  font-size: 12px;
+
+  cursor: pointer;
 }
+
+.closeBtn:hover {
+  background-color: rgb(240, 76, 76);
+}
+
 
 .form {
   display: flex;
@@ -59,6 +74,18 @@
   height: 45px;
 
   margin-top: 25px;
+  
+  border: none;
+  border-radius: 8px;
+
+  font-size: 16px;
+
   background-color: #04aa6d;
   color: #ffffff;
+
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #00b673;
 }

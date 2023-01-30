@@ -1,8 +1,8 @@
-import styles from "./EditOrderModal.module.css";
+import styles from "./ClientEditOrderModal.module.css";
 import axios from "axios";
 import { useClient } from "../../hooks/useClient";
 
-export default function EditOrderModal({
+export default function ClientEditOrderModal({
   open,
   onClose,
   client,
@@ -43,7 +43,7 @@ export default function EditOrderModal({
         className={styles.modalContainer}
       >
         <p className={styles.closeBtn} onClick={onClose}>
-          X
+          Fechar
         </p>
         <div className={styles.content}>
           <form className={styles.form} onSubmit={handleSubmit}>
