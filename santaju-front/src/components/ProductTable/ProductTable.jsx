@@ -2,8 +2,8 @@ import axios from "axios";
 import { useEffect } from "react";
 import styles from "./ProductTable.module.css";
 
-import EditIcon from "../ClientEditIcon/EditIcon";
-import DeleteIcon from "../ClientDeleteIcon/DeleteIcon";
+import ProductEditIcon from "../ProductEditIcon/ProductEditIcon";
+import ProductDeleteIcon from "../ProductDeleteIcon/ProductDeleteIcon";
 import { useProduct } from "../../hooks/useProduct";
 
 export default function ProductTable() {
@@ -43,7 +43,7 @@ export default function ProductTable() {
           <td>{product.title}</td>
           <td>R$ {product.price}</td>
           <td>
-            <EditIcon
+            <ProductEditIcon
               product={product}
               fetchProducts={fetchProducts}
               onClick={() => {
@@ -52,7 +52,10 @@ export default function ProductTable() {
             />
           </td>
           <td>
-            <DeleteIcon product={product} fetchProducts={fetchProducts} />
+            <ProductDeleteIcon
+              product={product}
+              fetchProducts={fetchProducts}
+            />
           </td>
         </tr>
       ))}
