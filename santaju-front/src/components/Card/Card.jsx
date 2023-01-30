@@ -1,33 +1,58 @@
-import EditIcon from "../EditIcon/EditIcon";
-import DeleteIcon from "../DeleteIcon/DeleteIcon";
+import EditIcon from "../ClientEditIcon/EditIcon";
+import DeleteIcon from "../ClientDeleteIcon/DeleteIcon";
 
 import styles from "./Card.module.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useClient } from "../../hooks/useClient";
 
 export default function Card() {
-  const [show, setShow] = useState(true);
+  const { clients, fetchClients } = useClient();
+  const [shows, setShows] = useState(Array(clients.length).fill(true));
+
+  useEffect(() => {
+    console.log(clients);
+    fetchClients();
+  }, []);
+
   return (
     <div>
-      <div className={styles.mainCard}>
-        <div className={styles.buttons}>
-          <EditIcon />
-          <DeleteIcon />
-        </div>
-        <div className={styles.content}>
-          <h2>Nome</h2>
-          <h3>Resultado</h3>
-          <h2>Telefone</h2>
-          <h3>Resultado</h3>
-          <button onClick={() => setShow(!show)}>Mais Detalhes</button>
-          <div style={{ display: show ? "none" : "block" }}>
-            <h2>Nome do produto</h2>
-            <h3>Resultado</h3>
-            <h2>Preço</h2>
-            <h3>Resultado</h3>
+      {clients.map((client, index) => (
+        <div className={styles.mainCard} key={client.id}>
+          <div className={styles.buttons}>
+            <EditIcon />
+            <DeleteIcon />
+          </div>
+          <div className={styles.content}>
+            <h2>Nome</h2>
+            <h3>{client.name}</h3>
+            <h2>Telefone</h2>
+            <h3>{client.phone}</h3>
+            <button
+              className={styles.details}
+              onClick={() =>
+                setShows((prevShows) => {
+                  const newShows = [...prevShows];
+                  newShows[index] = !newShows[index];
+                  return newShows;
+                })
+              }
+            >
+              Mais Detalhes
+            </button>
+            <div style={{ display: shows[index] ? "none" : "block" }}>
+              <div className={styles.headerProduct}>
+                <h2>Nome do produto</h2>
+                <h2>Preço</h2>
+              </div>
+              <div className={styles.productSection}>
+                <h3>product.title</h3>
+                <h3>R$ product.price</h3>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 }

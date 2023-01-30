@@ -25,3 +25,32 @@ h2 {
 h3 {
     font-weight: 500;
 }
+
+.details {
+    font-family: "Roboto Mono", monospace;
+    text-align: center;
+    background-color: rgb(54, 145, 19);
+    color: #ffffff;
+    padding: 5px;
+
+    margin-top: 15px;
+    margin-bottom: 10px;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.headerProduct {
+    display: flex;
+    justify-content: space-between;
+
+    margin-right: 30px;
+}
+
+.productSection {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 25px;
+}
