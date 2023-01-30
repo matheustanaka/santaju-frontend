@@ -1,8 +1,8 @@
-import styles from "./NewOrderModal.module.css";
+import styles from "./ClientOrderModal.module.css";
 import { useClient } from "../../hooks/useClient";
 import axios from "axios";
 
-export default function NewOrderModal({ open, onClose }) {
+export default function ClientOrderModal({ open, onClose }) {
   if (!open) return null;
 
   const { name, phone, setName, setPhone, fetchClients } = useClient();

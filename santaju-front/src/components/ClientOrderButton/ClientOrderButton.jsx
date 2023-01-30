@@ -1,12 +1,12 @@
-import styles from "./NewOrderButton.module.css";
+import styles from "./ClientOrderButton.module.css";
 
 import { useState } from "react";
 
 import { useClient } from "../../hooks/useClient";
 
-import NewOrderModal from "../NewOrderModal/NewOrderModal";
+import NewOrderModal from "../ClientOrderModal/ClientOrderModal";
 
-export default function NewOrderButton() {
+export default function ClientOrderButton() {
   const [openModal, setOpenModal] = useState(false);
 
   const { name, phone, setName, setPhone } = useClient();
