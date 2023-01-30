@@ -39,7 +39,7 @@ export default function ClientOrderModal({ open, onClose }) {
         className={styles.modalContainer}
       >
         <p className={styles.closeBtn} onClick={onClose}>
-          X
+          Fechar
         </p>
         <div className={styles.content}>
           <form className={styles.form} onSubmit={handleSubmit}>
