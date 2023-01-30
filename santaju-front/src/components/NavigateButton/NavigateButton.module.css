@@ -1,0 +1,22 @@
+.btn_list {
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+  }
+  
+  .btn_navigate {
+    margin-right: 10px;
+    padding: 8px;
+    background-color: #04aa6d;
+    border: none;
+    border-radius: 8px;
+    
+    color: #f5f5f5;
+    font-size: 16px;
+    
+    cursor: pointer;
+  }
+  
+  .btn_navigate:hover {
+    background-color: #2cb583;
+  }
