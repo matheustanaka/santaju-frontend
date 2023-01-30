@@ -2,8 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import styles from "./Table.module.css";
 
-import EditIcon from "../EditIcon/EditIcon";
-import DeleteIcon from "../DeleteIcon/DeleteIcon";
+import EditIcon from "../ClientEditIcon/EditIcon";
+import DeleteIcon from "../ClientDeleteIcon/DeleteIcon";
 import { useClient } from "../../hooks/useClient";
 
 export default function Table() {
@@ -35,13 +35,14 @@ export default function Table() {
       <tr>
         <th>Nome</th>
         <th>Telefone</th>
-        <th></th>
+        <th>Editar</th>
+        <th>Deletar</th>
       </tr>
       {clients.map((client) => (
         <tr key={client.id}>
           <td>{client.name}</td>
           <td>{client.phone}</td>
-          <td className={styles.tableIcon}>
+          <td>
             <EditIcon
               client={client}
               fetchClients={fetchClients}
@@ -49,6 +50,8 @@ export default function Table() {
                 onEditClick(client);
               }}
             />
+          </td>
+          <td>
             <DeleteIcon client={client} fetchClients={fetchClients} />
           </td>
         </tr>
