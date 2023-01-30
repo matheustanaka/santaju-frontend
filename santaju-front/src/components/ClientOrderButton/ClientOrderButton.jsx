@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { useClient } from "../../hooks/useClient";
 
-import NewOrderModal from "../ClientOrderModal/ClientOrderModal";
+import ClientOrderModal from "../ClientOrderModal/ClientOrderModal";
 
 export default function ClientOrderButton() {
   const [openModal, setOpenModal] = useState(false);
@@ -20,9 +20,9 @@ export default function ClientOrderButton() {
   return (
     <div>
       <button onClick={() => setOpenModal(true)} className={styles.createUser}>
-        Novo Pedido
+        Cadastrar Cliente
       </button>
-      <NewOrderModal open={openModal} onClose={onClose} />
+      <ClientOrderModal open={openModal} onClose={onClose} />
     </div>
   );
 }
