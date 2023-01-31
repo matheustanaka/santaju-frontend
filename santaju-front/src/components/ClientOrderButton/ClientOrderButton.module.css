@@ -13,3 +13,7 @@
 
   margin-right: 10px;
 }
+
+.createUser:hover {
+  background-color: rgb(86, 176, 50);
+}
