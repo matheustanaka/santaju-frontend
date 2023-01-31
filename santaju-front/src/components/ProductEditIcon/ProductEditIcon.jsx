@@ -1,5 +1,5 @@
 import { FiEdit } from "react-icons/fi";
-import ClientEditOrderModal from "../ClientEditOrderModal/ClientEditOrderModal";
+import ProductEditModal from "../ProductEditModal/ProductEditModal";
 import { useState } from "react";
 
 import styles from "./ProductEditIcon.module.css";
@@ -16,9 +16,9 @@ export default function ProductEditIcon({ product, fetchProducts, onClick }) {
           onClick();
         }}
       />
-      <ClientEditOrderModal
+      <ProductEditModal
         product={product}
-        fetchClients={fetchProducts}
+        fetchProducts={fetchProducts}
         open={openEditModal}
         onClose={() => setOpenEditModal(false)}
       />
