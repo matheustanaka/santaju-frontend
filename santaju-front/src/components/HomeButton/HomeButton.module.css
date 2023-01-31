@@ -1,0 +1,15 @@
+.backHome {
+    position: absolute;
+    right: 0;
+
+    padding: 8px;
+    margin: 10px;
+
+    border: none;
+    border-radius: 8px;
+  
+    background-color: #04aa6d;
+    color: #ffffff;
+  
+    cursor: pointer;
+}
