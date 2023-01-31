@@ -1,28 +1,33 @@
 import styles from "./ProductModal.module.css";
-import { useClient } from "../../hooks/useClient";
+import { useProduct } from "../../hooks/useProduct";
 import axios from "axios";
 
 export default function ProductModal({ open, onClose }) {
   if (!open) return null;
 
-  const { name, phone, setName, setPhone } = useClient();
+  const { title, price, setTitle, setPrice, fetchProducts } = useProduct();
 
-  const handleChangeName = (event) => {
-    setName(event.target.value);
+  const handleChangeTitle = (event) => {
+    setTitle(event.target.value);
   };
 
-  const handleChangePhone = (event) => {
-    setPhone(event.target.value);
+  const handleChangePrice = (event) => {
+    setPrice(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/client", {
-        name: name,
-        phone: phone,
+      const { data } = await axios.post("http://localhost:3000/api/product", {
+        title: title,
+        price: price,
       });
-      console.log(response.data);
+      console.log(data);
+
+      fetchProducts();
+
+      setTitle("");
+      setPrice("");
     } catch (error) {
       console.log(error);
     }
@@ -37,7 +42,7 @@ export default function ProductModal({ open, onClose }) {
         className={styles.modalContainer}
       >
         <p className={styles.closeBtn} onClick={onClose}>
-          X
+          Fechar
         </p>
         <div className={styles.content}>
           <form className={styles.form} onSubmit={handleSubmit}>
@@ -45,24 +50,24 @@ export default function ProductModal({ open, onClose }) {
               <input
                 className={styles.input}
                 type="text"
-                name="name"
+                name="title"
                 placeholder="Título do Produto"
-                value={name}
-                onChange={handleChangeName}
+                value={title}
+                onChange={handleChangeTitle}
               />
             </label>
             <label>
               <input
                 className={styles.input}
                 type="text"
-                name="phone"
-                value={phone}
-                placeholder="Preco"
-                onChange={handleChangePhone}
+                name="price"
+                value={price}
+                placeholder="Preço"
+                onChange={handleChangePrice}
               />
             </label>
             <button className={styles.btn} type="submit">
-              Create
+              Cadastrar Produto
             </button>
           </form>
         </div>
