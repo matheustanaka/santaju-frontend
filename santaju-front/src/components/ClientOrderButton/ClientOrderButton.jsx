@@ -11,6 +11,12 @@ export default function ClientOrderButton() {
 
   const { name, phone, setName, setPhone } = useClient();
 
+  const onClickButton = () => {
+    setName("");
+    setPhone("");
+    setOpenModal(true);
+  };
+
   const onClose = () => {
     setName("");
     setPhone("");
@@ -19,7 +25,7 @@ export default function ClientOrderButton() {
 
   return (
     <div>
-      <button onClick={() => setOpenModal(true)} className={styles.createUser}>
+      <button onClick={onClickButton} className={styles.createUser}>
         Cadastrar Cliente
       </button>
       <ClientOrderModal open={openModal} onClose={onClose} />
