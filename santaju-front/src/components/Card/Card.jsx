@@ -1,11 +1,8 @@
-import EditIcon from "../ClientEditIcon/EditIcon";
-import DeleteIcon from "../ClientDeleteIcon/DeleteIcon";
-
-import styles from "./Card.module.css";
-
 import { useState, useEffect } from "react";
 import { useClient } from "../../hooks/useClient";
 import { useProduct } from "../../hooks/useProduct";
+
+import styles from "./Card.module.css";
 
 export default function Card() {
   const { clients, fetchClients } = useClient();
@@ -21,10 +18,6 @@ export default function Card() {
     <div>
       {clients.map((client, index) => (
         <div className={styles.mainCard} key={client.id}>
-          <div className={styles.buttons}>
-            <EditIcon />
-            <DeleteIcon />
-          </div>
           <div className={styles.content}>
             <div className={styles.headerClient}>
               <h2>Nome</h2>
