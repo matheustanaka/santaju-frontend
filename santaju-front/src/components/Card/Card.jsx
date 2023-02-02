@@ -5,13 +5,16 @@ import styles from "./Card.module.css";
 
 import { useState, useEffect } from "react";
 import { useClient } from "../../hooks/useClient";
+import { useProduct } from "../../hooks/useProduct";
 
 export default function Card() {
   const { clients, fetchClients } = useClient();
+  const { fetchProducts } = useProduct();
   const [shows, setShows] = useState(Array(clients.length).fill(true));
 
   useEffect(() => {
     fetchClients();
+    fetchProducts();
   }, []);
 
   return (
