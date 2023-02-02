@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import { useClient } from "../../hooks/useClient";
 import { useProduct } from "../../hooks/useProduct";
+import { useOrder } from "../../hooks/useOrder";
+
+import EditIcon from "../ClientEditIcon/EditIcon";
+import OrderDeleteIcon from "../OrderDeleteIcon/OrderDeleteIcon";
 
 import styles from "./Card.module.css";
 
 export default function Card() {
+  const { fetchOrders } = useOrder();
   const { clients, fetchClients } = useClient();
   const { fetchProducts } = useProduct();
   const [shows, setShows] = useState(Array(clients.length).fill(true));
@@ -12,6 +17,7 @@ export default function Card() {
   useEffect(() => {
     fetchClients();
     fetchProducts();
+    fetchOrders();
   }, []);
 
   return (
@@ -38,19 +44,33 @@ export default function Card() {
                 })
               }
             >
-              Mais Detalhes
+              Lista de Pedidos
             </button>
             <div style={{ display: shows[index] ? "none" : "block" }}>
-              <div className={styles.headerProduct}>
-                <h2>Nome do produto</h2>
-                <h2>Preço</h2>
-              </div>
-              {client.Order.map((order) => (
-                <div className={styles.productSection} key={order.id}>
-                  <h3>{order.product.title}</h3>
-                  <h3>R$ {order.product.price}</h3>
-                </div>
-              ))}
+              <table className={styles.table}>
+                <tr>
+                  <th>Produto</th>
+                  <th>Preço</th>
+                  <th>Editar</th>
+                  <th>Deletar</th>
+                </tr>
+                {client.Order.map((order) => (
+                  <tr key={order.id}>
+                    <td>{order.product.title}</td>
+                    <td>{order.product.price}</td>
+                    <td>
+                      <EditIcon
+                        onClick={() => {
+                          onEditClick(client);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <OrderDeleteIcon order={order} />
+                    </td>
+                  </tr>
+                ))}
+              </table>
             </div>
           </div>
         </div>
