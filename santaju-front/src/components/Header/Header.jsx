@@ -1,6 +1,7 @@
 import styles from "./Header.module.css";
 import ClientOrderButton from "../ClientOrderButton/ClientOrderButton";
 import CreateProductButton from "../CreateProductButton/CreateProductButton";
+import CreateOrderButton from "../CreateOrderButton/CreateOrderButton";
 
 export default function Header() {
   return (
@@ -10,6 +11,7 @@ export default function Header() {
         <div className={styles.btns}>
           <ClientOrderButton />
           <CreateProductButton />
+          <CreateOrderButton />
         </div>
       </header>
     </div>
