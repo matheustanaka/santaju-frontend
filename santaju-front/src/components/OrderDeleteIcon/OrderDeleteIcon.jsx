@@ -1,11 +1,13 @@
 import { RiDeleteBin7Line } from "react-icons/ri";
 import axios from "axios";
 import styles from "./OrderDeleteIcon.module.css";
+import { useOrder } from "../../hooks/useOrder";
 
-export default function OrderDeleteIcon({ orders, fetchOrders }) {
+export default function OrderDeleteIcon({ order }) {
+  const { fetchOrders } = useOrder();
   const handleDeleteClient = async () => {
     try {
-      await axios.delete(`http://localhost:3000/api/order/${orders.id}`);
+      await axios.delete(`http://localhost:3000/api/order/${order.id}`);
 
       await fetchOrders();
     } catch (error) {
