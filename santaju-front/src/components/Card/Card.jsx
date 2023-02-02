@@ -26,10 +26,15 @@ export default function Card() {
             <DeleteIcon />
           </div>
           <div className={styles.content}>
-            <h2>Nome</h2>
-            <h3>{client.name}</h3>
-            <h2>Telefone</h2>
-            <h3>{client.phone}</h3>
+            <div className={styles.headerClient}>
+              <h2>Nome</h2>
+              <h2>Telefone</h2>
+            </div>
+            <div className={styles.clientSection}>
+              <h3>{client.name}</h3>
+              <h3>{client.phone}</h3>
+            </div>
+
             <button
               className={styles.details}
               onClick={() =>
