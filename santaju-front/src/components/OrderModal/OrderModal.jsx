@@ -13,10 +13,6 @@ export default function OrderModal({ open, onClose }) {
   const { clients, fetchClients } = useClient();
   const { products, fetchProducts } = useProduct();
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
   const handleChangeClient = (event) => {
     setId_Client(event.target.value);
   };
@@ -29,7 +25,7 @@ export default function OrderModal({ open, onClose }) {
     event.preventDefault();
 
     try {
-      const { data } = await axios.post("http://localhost:3000/api/order", {
+      await axios.post("http://localhost:3000/api/order", {
         id_product: id_product,
         id_client: id_client,
       });
@@ -55,17 +51,23 @@ export default function OrderModal({ open, onClose }) {
         </p>
         <div className={styles.content}>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <label htmlFor="client">Nome do Cliente</label>
-            <select value={id_client} onChange={handleChangeClient}>
+            <h2 className={styles.title}>Nome do Cliente</h2>
+            <select onChange={handleChangeClient}>
+              <option value="">Selecione um cliente</option>
               {clients.map((client) => (
-                <option value={client.id}>{client.name}</option>
+                <option key={client.id} value={client.id}>
+                  {client.name}
+                </option>
               ))}
             </select>
 
-            <label htmlFor="product">Nome do Produto</label>
-            <select value={id_product} onChange={handleChangeProduct}>
+            <h2 className={styles.title}>Nome do Produto</h2>
+            <select onChange={handleChangeProduct}>
+              <option value="">Selecione um produto</option>
               {products.map((product) => (
-                <option value={product.id}>{product.title}</option>
+                <option key={product.id} value={product.id}>
+                  {product.title}
+                </option>
               ))}
             </select>
             <button className={styles.btn} type="submit">
