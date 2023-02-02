@@ -11,7 +11,6 @@ export default function Card() {
   const [shows, setShows] = useState(Array(clients.length).fill(true));
 
   useEffect(() => {
-    console.log(clients);
     fetchClients();
   }, []);
 
@@ -45,10 +44,12 @@ export default function Card() {
                 <h2>Nome do produto</h2>
                 <h2>Preço</h2>
               </div>
-              <div className={styles.productSection}>
-                <h3>product.title</h3>
-                <h3>R$ product.price</h3>
-              </div>
+              {client.Order.map((order) => (
+                <div className={styles.productSection} key={order.id}>
+                  <h3>{order.product.title}</h3>
+                  <h3>R$ {order.product.price}</h3>
+                </div>
+              ))}
             </div>
           </div>
         </div>
