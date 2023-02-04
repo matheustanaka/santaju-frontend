@@ -33,8 +33,8 @@ export default function ProductTable() {
   return (
     <table className={styles.table}>
       <tr>
-        <th>Nome</th>
-        <th>Telefone</th>
+        <th>Produto</th>
+        <th>Preço</th>
         <th>Editar</th>
         <th>Deletar</th>
       </tr>
