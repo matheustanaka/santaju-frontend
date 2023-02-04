@@ -3,16 +3,21 @@ import { useClient } from "../../hooks/useClient";
 import { useProduct } from "../../hooks/useProduct";
 import { useOrder } from "../../hooks/useOrder";
 
-import EditIcon from "../ClientEditIcon/EditIcon";
+import OrderEditIcon from "../OrderEditIcon/OrderEditIcon";
 import OrderDeleteIcon from "../OrderDeleteIcon/OrderDeleteIcon";
 
 import styles from "./Card.module.css";
 
 export default function Card() {
-  const { fetchOrders } = useOrder();
+  const { fetchOrders, setId_Client, setId_Product } = useOrder();
   const { clients, fetchClients } = useClient();
   const { fetchProducts } = useProduct();
   const [shows, setShows] = useState(Array(clients.length).fill(true));
+
+  const onEditClick = (order) => {
+    setId_Client(order.id_client);
+    setId_Product(order.id_product);
+  };
 
   useEffect(() => {
     fetchClients();
@@ -59,9 +64,10 @@ export default function Card() {
                     <td>{order.product.title}</td>
                     <td>{order.product.price}</td>
                     <td>
-                      <EditIcon
+                      <OrderEditIcon
+                        order={order}
                         onClick={() => {
-                          onEditClick(client);
+                          onEditClick(order);
                         }}
                       />
                     </td>
