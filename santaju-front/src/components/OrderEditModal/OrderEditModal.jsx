@@ -50,15 +50,6 @@ export default function OrderEditModal({ order, open, onClose }) {
         </p>
         <div className={styles.content}>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <h2 className={styles.title}>Nome do Cliente</h2>
-            <select onChange={handleChangeClient}>
-              <option value="">Selecione um cliente</option>
-              {clients.map((client) => (
-                <option key={client.id} value={client.id}>
-                  {client.name}
-                </option>
-              ))}
-            </select>
             <h2 className={styles.title}>Nome do Produto</h2>
             <select onChange={handleChangeProduct}>
               <option value="">Selecione um produto</option>
