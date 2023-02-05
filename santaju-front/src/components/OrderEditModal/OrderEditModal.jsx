@@ -24,10 +24,13 @@ export default function OrderEditModal({ order, open, onClose }) {
     event.preventDefault();
 
     try {
-      await axios.put(`http://localhost:3000/api/order/${order.id}`, {
-        id_product: id_product,
-        id_client: id_client,
-      });
+      await axios.put(
+        `https://santaju-backend-production.up.railway.app/api/order/${order.id}`,
+        {
+          id_product: id_product,
+          id_client: id_client,
+        }
+      );
 
       await fetchOrders();
       await fetchClients();

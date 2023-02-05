@@ -25,10 +25,13 @@ export default function OrderModal({ open, onClose }) {
     event.preventDefault();
 
     try {
-      await axios.post("http://localhost:3000/api/order", {
-        id_product: id_product,
-        id_client: id_client,
-      });
+      await axios.post(
+        "https://santaju-backend-production.up.railway.app/api/order",
+        {
+          id_product: id_product,
+          id_client: id_client,
+        }
+      );
 
       fetchOrders();
       fetchClients();

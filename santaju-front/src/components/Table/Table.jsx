@@ -11,7 +11,9 @@ export default function Table() {
 
   const fetchClients = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3000/api/clients");
+      const { data } = await axios.get(
+        "https://santaju-backend-production.up.railway.app/api/clients"
+      );
       setClients(data);
     } catch (error) {
       console.log(error);

@@ -11,7 +11,9 @@ export default function ProductTable() {
 
   const fetchProducts = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3000/api/products");
+      const { data } = await axios.get(
+        "https://santaju-backend-production.up.railway.app/api/products"
+      );
       setProducts(data);
     } catch (error) {
       console.log(error);

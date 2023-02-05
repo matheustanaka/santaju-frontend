@@ -6,7 +6,9 @@ import styles from "./DeleteIcon.module.css";
 export default function DeleteIcon({ client, fetchClients }) {
   const handleDeleteClient = async () => {
     try {
-      await axios.delete(`http://localhost:3000/api/client/${client.id}`);
+      await axios.delete(
+        `https://santaju-backend-production.up.railway.app/api/client/${client.id}`
+      );
 
       await fetchClients();
     } catch (error) {

@@ -18,10 +18,13 @@ export default function ClientOrderModal({ open, onClose }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/client", {
-        name: name,
-        phone: phone,
-      });
+      const response = await axios.post(
+        "https://santaju-backend-production.up.railway.app/api/client",
+        {
+          name: name,
+          phone: phone,
+        }
+      );
       console.log(response.data);
 
       fetchClients();

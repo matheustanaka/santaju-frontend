@@ -11,7 +11,9 @@ export default function OrderDeleteIcon({ order }) {
   const { fetchClients } = useClient();
   const handleDeleteClient = async () => {
     try {
-      await axios.delete(`http://localhost:3000/api/order/${order.id}`);
+      await axios.delete(
+        `https://santaju-backend-production.up.railway.app/api/order/${order.id}`
+      );
 
       await fetchOrders();
       await fetchClients();

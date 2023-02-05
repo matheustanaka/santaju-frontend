@@ -23,10 +23,13 @@ export default function ProductEditModal({
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/api/product/${product.id}`, {
-        title: title,
-        price: price,
-      });
+      await axios.put(
+        `https://santaju-backend-production.up.railway.app/api/product/${product.id}`,
+        {
+          title: title,
+          price: price,
+        }
+      );
 
       fetchProducts();
     } catch (error) {

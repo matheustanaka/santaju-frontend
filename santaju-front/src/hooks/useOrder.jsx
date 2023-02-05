@@ -10,7 +10,9 @@ export default function OrderProvider({ children }) {
 
   const fetchOrders = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3000/api/orders");
+      const { data } = await axios.get(
+        "https://santaju-backend-production.up.railway.app/api/orders"
+      );
       setOrders(data);
     } catch (error) {
       console.log(error);

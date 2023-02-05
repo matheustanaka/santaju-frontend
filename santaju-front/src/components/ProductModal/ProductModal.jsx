@@ -18,10 +18,13 @@ export default function ProductModal({ open, onClose }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axios.post("http://localhost:3000/api/product", {
-        title: title,
-        price: price,
-      });
+      const { data } = await axios.post(
+        "https://santaju-backend-production.up.railway.app/api/product",
+        {
+          title: title,
+          price: price,
+        }
+      );
       console.log(data);
 
       fetchProducts();

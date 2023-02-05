@@ -23,10 +23,13 @@ export default function ClientEditOrderModal({
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/api/client/${client.id}`, {
-        name: name,
-        phone: phone,
-      });
+      await axios.put(
+        `https://santaju-backend-production.up.railway.app/api/client/${client.id}`,
+        {
+          name: name,
+          phone: phone,
+        }
+      );
 
       fetchClients();
     } catch (error) {
